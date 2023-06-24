@@ -1,14 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState} from 'react';
 
 export default function Dropdown(props) {
 
     const [inputs, setInputs] = useState({});
-
-    const previousInputValue = useRef({});
-
-    useEffect(() => {
-        previousInputValue.current = inputs;
-    }, [inputs]);
 
     let handleChange = (event => {
         console.log(event);
@@ -19,8 +13,8 @@ export default function Dropdown(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        previousInputValue.current.dropOptions = previousInputValue.current.dropOptions.split("\n")
+        console.log("data  2", inputs.dropOptions);
+        inputs.dropOptions = inputs.dropOptions.split("\n");
 
         props.done(inputs)
         setInputs({})

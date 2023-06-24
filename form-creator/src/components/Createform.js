@@ -34,14 +34,14 @@ export default function Home(props) {
 
     const handleChange = (event => {
         const name = event.target.name;
-        const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+        const value = event.target.type;
         setInputs(values => ({ ...values, [name]: value }))
     })
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const formData = {
+        const updatedFormData = {
             ...formData,
             ...inputs,
         };
@@ -49,9 +49,10 @@ export default function Home(props) {
         fetch(' http://localhost:3000/main', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(updatedFormData)
         })
         setInputs({})
+        setFormData(updatedFormData)
     }
     const done = (data) => {
         setFormData({ ...formData, forms: [...(formData?.forms || []), data] })

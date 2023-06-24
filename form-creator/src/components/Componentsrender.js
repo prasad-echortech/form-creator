@@ -36,7 +36,7 @@ export default function Componentsrender({ formData }) {
       return (
         <div key={item.id}>
           <label><h3>{item.radioname}</h3></label>
-          <input type="radio" checked={item.isRequired} />
+          <input type="radio" checked={item.isRequired?true:false} />
         </div>
       );
     }
@@ -77,7 +77,7 @@ export default function Componentsrender({ formData }) {
     <>
       {isFormVisible && (
         <div className="row mb-1">
-          <div className='col-7 bg-warning  container'>
+          <div className='col-7 container'>
             <form >{formData.map((item) => renderFormElement(item))}</form>
             <button className='btn bg-success mt-2 mb-2' onClick={remove}>Remove Form</button>
           </div>

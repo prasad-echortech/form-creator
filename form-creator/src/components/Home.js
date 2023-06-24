@@ -100,12 +100,14 @@ export default function Home() {
       <div className="container-fluid text-center">
         <div className="row">
 
-          <div className="col-4">
+          <div className="col-4  mb-5">
+            <h1>Choose Forms</h1>
             <form >{data.map((item) => renderFormName(item))}</form>
           </div>
 
-          <div className="col bg-warning mt-5 p-2 me-5">
-            <form >{renderFormElement(selectedForm)}</form>
+          <div className="col mt-5 p-2 me-5 mb-5 border border-danger" >
+            <form>{renderFormElement(selectedForm)}</form>
+            <button className='btn btn-success mt-5'>Submit</button>
           </div>
 
         </div>
