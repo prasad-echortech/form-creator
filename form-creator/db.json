@@ -249,6 +249,17 @@
       "formName": "text",
       "fromDesc": "textarea",
       "id": 13
+    },
+    {
+      "forms": [
+        {
+          "checkboxname": "cb hello",
+          "isRequired": true
+        }
+      ],
+      "formName": "text",
+      "fromDesc": "textarea",
+      "id": 14
     }
   ]
 }

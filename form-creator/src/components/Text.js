@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 export default function Text(props) {
 
     let [inputs, setInputs] = useState({});
+    
     const handleChange = (event => {
         const name = event.target.name;
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import Text from "./Text";
 import Dropdown from "./Dropdown";
 import Checkbox from "./Checkbox";
@@ -14,7 +14,7 @@ let components = {
     "dropdown": Dropdown,
 };
 
-export default function Home(props) {
+export default function Home() {
 
     const [formData, setFormData] = useState({})
 
@@ -22,19 +22,14 @@ export default function Home(props) {
 
     const [activeComponent, setActiveComponent] = useState(null);
 
-    const previousInputValue = useRef({});
-
-    useEffect(() => {
-        previousInputValue.current = inputs;
-    }, [inputs]);
-
     const handleClick = (component) => {
         setActiveComponent(component)
     }
 
-    const handleChange = (event => {
+    const handleChange = ((event) => {
         const name = event.target.name;
-        const value = event.target.type;
+        const value = event.target.value;
+        console.log(value);
         setInputs(values => ({ ...values, [name]: value }))
     })
 
@@ -58,11 +53,12 @@ export default function Home(props) {
         setFormData({ ...formData, forms: [...(formData?.forms || []), data] })
     }
     const InputComponent = components[activeComponent]
+
     return (
         <>
-            <div class="container-fluid text-center">
-                <div class="row">
-                    <div class="col mt-5">
+            <div className="container-fluid text-center">
+                <div className="row">
+                    <div className="col mt-5">
                         {Object.keys(components).map((compkey) => (
                             <button key={compkey} className=""
                                 onClick={() => handleClick(compkey)} style={{ width: "120px" }}>
@@ -83,10 +79,10 @@ export default function Home(props) {
                         </form>
                     </div>
 
-                    <div class="col">
+                    <div className="col">
                         {activeComponent && <InputComponent done={done} />}
                     </div>
-                    <div class="col">
+                    <div className="col">
                         <h1>your Form</h1>
                         {formData?.forms?.length > 0 &&
                             <Componentsrender formData={formData.forms} />}
